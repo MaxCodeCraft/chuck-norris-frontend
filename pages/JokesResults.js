@@ -21,15 +21,23 @@ function JokesResults() {
     fetchData();
   }, []);
 
-  const joke = results.map((data) => {
-    return <Joke value={data.value} date={data.date} />;
+  const joke = results.map((data, index) => {
+    const bgColor = index % 2 === 0 ? "bg-[#E9E9E9]" : "";
+    return (
+      <Joke
+        hey={index}
+        value={data.value}
+        date={data.date}
+        background={bgColor}
+      />
+    );
   });
   return (
     <div className="table w-10/12">
       <p className="title font-jomhuria text-4xl text-[#35505D]">
         "Mes" blagues
       </p>
-      <div className=" border-red-500 border-4 rounded-xl h-96 px-4 overflow-auto">
+      <div className=" border-red-500 border-4 rounded-xl h-96 overflow-auto">
         {joke}
       </div>
     </div>
